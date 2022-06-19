@@ -6,10 +6,10 @@ import org.springframework.kafka.annotation.EnableKafka;
 
 @EnableKafka
 @SpringBootApplication
-public class SpringBootKafkaAppApplication {
+public class SmartXiProxySpringBootApplication {
 
 	public static void main(String[] args) 
 	{
-		SpringApplication.run(SpringBootKafkaAppApplication.class, args);
+		SpringApplication.run(SmartXiProxySpringBootApplication.class, args);
 	}
 }

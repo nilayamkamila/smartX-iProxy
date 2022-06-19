@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "900f487c-98b6-4645-99f8-f48d594ef261",
+		"name": "Research",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "smart_iProxy_salary_prediction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/predict?name=nilayam&experience=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"predict"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "nilayam"
+						},
+						{
+							"key": "experience",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/kafka/publish?message=helloworld6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/kafka/publish?message=helloworld6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"kafka",
+						"publish"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "helloworld6"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

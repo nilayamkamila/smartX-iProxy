@@ -16,19 +16,13 @@ public class KafKaProducerService
 	private static final Logger logger = 
 			LoggerFactory.getLogger(KafKaProducerService.class);
 	
-	//1. General topic with string payload
-	
-	@Value(value = "${general.topic.name}")
+	@Value(value = "${iproxy.topic.name}")
     private String topicName;
 	
 	@Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    
-    /*@Autowired
-    private KafkaTemplate<String, User> userKafkaTemplate;*/
-	
-	public void sendMessage(String message) 
+	public void sendMessage(String message)
 	{
 		ListenableFuture<SendResult<String, String>> future 
 			= this.kafkaTemplate.send(topicName, message);
@@ -46,23 +40,4 @@ public class KafKaProducerService
             }
        });
 	}
-	
-	/*public void saveCreateUserLog(User user)
-	{
-		ListenableFuture<SendResult<String, User>> future 
-			= this.userKafkaTemplate.send(userTopicName, user);
-		
-		future.addCallback(new ListenableFutureCallback<SendResult<String, User>>() {
-            @Override
-            public void onSuccess(SendResult<String, User> result) {
-            	logger.info("User created: " 
-            			+ user + " with offset: " + result.getRecordMetadata().offset());
-            }
-
-            @Override
-            public void onFailure(Throwable ex) {
-            	logger.error("User created : " + user, ex);
-            }
-       });
-	}*/
 }

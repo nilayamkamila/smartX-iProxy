@@ -17,7 +17,7 @@ public class TopicConfig
 	@Value(value = "${kafka.bootstrapAddress}")
 	private String bootstrapAddress;
 
-	@Value(value = "${general.topic.name}")
+	@Value(value = "${iproxy.topic.name}")
 	private String topicName;
 
 	@Bean
