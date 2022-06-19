@@ -1,4 +1,4 @@
-package com.howtodoinjava.kafka.demo.model;
+package com.tserc.api.smart.iproxy.model;
 
 import java.util.Date;
 

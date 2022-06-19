@@ -1,4 +1,4 @@
-package com.howtodoinjava.kafka.demo.service;
+package com.tserc.api.smart.iproxy.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +9,6 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
-
-import com.howtodoinjava.kafka.demo.model.User;
 
 @Service
 public class KafKaProducerService 
@@ -26,13 +24,9 @@ public class KafKaProducerService
 	@Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-	//2. Topic with user object payload
     
-    @Value(value = "${user.topic.name}")
-    private String userTopicName;
-    
-    @Autowired
-    private KafkaTemplate<String, User> userKafkaTemplate;
+    /*@Autowired
+    private KafkaTemplate<String, User> userKafkaTemplate;*/
 	
 	public void sendMessage(String message) 
 	{
@@ -53,7 +47,7 @@ public class KafKaProducerService
        });
 	}
 	
-	public void saveCreateUserLog(User user) 
+	/*public void saveCreateUserLog(User user)
 	{
 		ListenableFuture<SendResult<String, User>> future 
 			= this.userKafkaTemplate.send(userTopicName, user);
@@ -70,5 +64,5 @@ public class KafKaProducerService
             	logger.error("User created : " + user, ex);
             }
        });
-	}
+	}*/
 }

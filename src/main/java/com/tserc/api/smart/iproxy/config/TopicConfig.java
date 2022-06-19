@@ -1,4 +1,4 @@
-package com.howtodoinjava.kafka.demo.config;
+package com.tserc.api.smart.iproxy.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,9 +20,6 @@ public class TopicConfig
 	@Value(value = "${general.topic.name}")
 	private String topicName;
 
-	@Value(value = "${user.topic.name}")
-	private String userTopicName;
-
 	@Bean
 	public NewTopic generalTopic() {
 		return TopicBuilder.name(topicName)
@@ -31,16 +28,6 @@ public class TopicConfig
 			      .build();
 	}
 
-	@Bean
-	public NewTopic userTopic() {
-		return TopicBuilder.name(userTopicName)
-			      .partitions(1)
-			      .replicas(1)
-			      .build();
-	}
-	
-	//If not using spring boot
-	
 	@Bean
     public KafkaAdmin kafkaAdmin() 
 	{

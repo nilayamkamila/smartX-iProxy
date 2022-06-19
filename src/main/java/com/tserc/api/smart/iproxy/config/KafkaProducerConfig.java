@@ -1,4 +1,4 @@
-package com.howtodoinjava.kafka.demo.config;
+package com.tserc.api.smart.iproxy.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,15 +13,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import com.howtodoinjava.kafka.demo.model.User;
-
 @Configuration
 public class KafkaProducerConfig 
 {
 	@Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
-	
-	//1. Send string to Kafka
 	
 	@Bean
 	public ProducerFactory<String, String> producerFactory() {
@@ -36,19 +32,4 @@ public class KafkaProducerConfig
 	public KafkaTemplate<String, String> kafkaTemplate() {
 	    return new KafkaTemplate<>(producerFactory());
 	}
-	
-	//2. Send User objects to Kafka
-	@Bean
-    public ProducerFactory<String, User> userProducerFactory() {
-        Map<String, Object> configProps = new HashMap<>();
-        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        return new DefaultKafkaProducerFactory<>(configProps);
-    }
-
-    @Bean
-    public KafkaTemplate<String, User> userKafkaTemplate() {
-        return new KafkaTemplate<>(userProducerFactory());
-    }
 }
